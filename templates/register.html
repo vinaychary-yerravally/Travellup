@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Registration</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e')
+            no-repeat center center/cover;
+        }
+
+        .container{
+            width:400px;
+            padding:40px;
+            background:rgba(255,255,255,0.15);
+            backdrop-filter:blur(12px);
+            border-radius:20px;
+            box-shadow:0 8px 32px rgba(0,0,0,0.3);
+            text-align:center;
+            color:white;
+        }
+
+        .container h2{
+            margin-bottom:25px;
+            font-size:32px;
+        }
+
+        .input-box{
+            width:100%;
+            margin:12px 0;
+        }
+
+        .input-box input{
+            width:100%;
+            padding:12px;
+            border:none;
+            outline:none;
+            border-radius:8px;
+            font-size:15px;
+        }
+
+        .btn{
+            width:100%;
+            padding:12px;
+            margin-top:15px;
+            border:none;
+            border-radius:8px;
+            background:#02b0ce;
+            color:white;
+            font-size:16px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        .btn:hover{
+            background:#02b0ce;
+        }
+
+        .messages{
+            margin-top:15px;
+            color:#ffe082;
+        }
+
+        .messages h3{
+            font-size:14px;
+            margin-top:5px;
+        }
+
+        .login-link{
+            margin-top:15px;
+            display:block;
+            color:white;
+            text-decoration:none;
+        }
+
+        .login-link:hover{
+            text-decoration:underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Travel Register</h2>
+
+        <form action="register" method="post">
+            {% csrf_token %}
+
+            <div class="input-box">
+                <input type="text" name="first_name" placeholder="First Name">
+            </div>
+
+            <div class="input-box">
+                <input type="text" name="last_name" placeholder="Last Name">
+            </div>
+
+            <div class="input-box">
+                <input type="text" name="username" placeholder="Username">
+            </div>
+
+            <div class="input-box">
+                <input type="email" name="email" placeholder="Email">
+            </div>
+
+            <div class="input-box">
+                <input type="password" name="password1" placeholder="Password">
+            </div>
+
+            <div class="input-box">
+                <input type="password" name="password2" placeholder="Confirm Password">
+            </div>
+
+            <button type="submit" class="btn">Create Account</button>
+        </form>
+
+        <div class="messages">
+            {% for message in messages %}
+                <h3>{{ message }}</h3>
+            {% endfor %}
+        </div>
+
+        <a href="/login" class="login-link">
+            Already have an account? Login
+        </a>
+    </div>
+
+</body>
+</html>

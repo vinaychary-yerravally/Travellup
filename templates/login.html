@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width='device-width', initial-scale=1.0">
+    <title>Login</title>
+     <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            margin:0;
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:
+                linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80');
+            background-size:cover;
+            background-position:center;
+        }
+        .container{
+            width:350px;
+            background:white;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 0 20px rgba(0,0,0,0.3);
+            text-align:center;
+        }
+
+        h2{
+            margin-bottom:20px;
+            color:#333;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            margin:10px 0;
+            border:1px solid #ccc;
+            border-radius:5px;
+            outline:none;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#ff6b35;
+            color:white;
+            border:none;
+            border-radius:5px;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#e85a2a;
+        }
+
+        .messages{
+            color:red;
+            margin-top:10px;
+        }
+
+        .register-link{
+            margin-top:15px;
+            display:block;
+            text-decoration:none;
+            color:#2193b0;
+        }
+    </style>
+</head>
+<body>
+    <form action="login" method="post">
+        {% csrf_token %}
+
+        <input type="text" name="username" placeholder="Username"><br>
+        <input type="password" name="password" placeholder="password"><br>
+        <input type="submit" >
+    </form>
+    <div>
+         {% for message in messages %}
+        <h3>{{message}}</h3>
+        {% endfor %}
+    </div>
+</body>
+</html>
